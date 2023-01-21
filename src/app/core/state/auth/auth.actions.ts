@@ -1,7 +1,7 @@
 import { IloginData } from '../../interfaces/auth.interface';
 export class CoinkLoginAction {
   static readonly type = '[Auth] Login';
-  constructor(public payload: IloginData) {}
+  constructor() {}
 }
 
 export class CoinkLogoutAction {
