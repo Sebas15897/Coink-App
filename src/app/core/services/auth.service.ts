@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IloginData } from '../interfaces/auth.interface';
+import { AppSettings } from '../app.settings';
+import { ILoginResponse } from '../interfaces/response.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -9,11 +10,12 @@ import { IloginData } from '../interfaces/auth.interface';
 export class AuthService {
   constructor(
     private httpClient: HttpClient,
+    private appSettins: AppSettings,
   ) {}
 
-  login(loginData: IloginData) {
-    const url = '';
-    return this.httpClient.post<any>(url, loginData);
+  login() {
+    const url = this.appSettins.auth.urls.login;
+    return this.httpClient.get<ILoginResponse>(url);
   }
 
   logout() {}

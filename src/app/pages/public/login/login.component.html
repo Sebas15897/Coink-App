@@ -75,7 +75,7 @@
       </div>
 
       <div class="col-12 text-center">
-        <button [disabled]="invalidForm" class="btn px-5 btn-primary">
+        <button [disabled]="invalidForm" (click)="login()" class="btn px-5 btn-primary">
           Inciar sesión
         </button>
       </div>
