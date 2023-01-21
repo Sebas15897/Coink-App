@@ -13,7 +13,7 @@ import { CoinkLoginAction, CoinkLogoutAction } from './auth.actions';
 
 export interface AuthStateModel {
   token: string | null;
-  user: IUser
+  user: IUser;
 }
 
 @State<AuthStateModel>({
@@ -63,5 +63,16 @@ export class AuthState {
   }
 
   @Action(CoinkLogoutAction)
-  CoinkLogoutAction(ctx: StateContext<AuthStateModel>) {}
+  CoinkLogoutAction(ctx: StateContext<AuthStateModel>) {
+    ctx.dispatch(new CoinkShowLoadingAction());
+    setTimeout(() => {
+      ctx.dispatch(new CoinkHideLoadingAction()).subscribe(() => {
+        this.sweetAlertHelper.createCustomAlert({
+          title: 'Sesión finalizada con éxito',
+          text: 'Esperamos que vuelva pronto',
+          icon: 'success',
+        });
+      });
+    }, 2000);
+  }
 }
