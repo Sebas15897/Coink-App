@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
 import { tap } from 'rxjs';
 import { SweetAlertHelper } from '../../helpers/sweet-alert.helper';
+import { IUser } from '../../interfaces/user.interface';
 import { AuthService } from '../../services/auth.service';
 import {
   CoinkHideLoadingAction,
@@ -12,14 +13,17 @@ import { CoinkLoginAction, CoinkLogoutAction } from './auth.actions';
 
 export interface AuthStateModel {
   token: string | null;
+  user: IUser
 }
 
 @State<AuthStateModel>({
   name: 'auth',
   defaults: {
     token: null,
+    user: {} as IUser,
   },
 })
+
 @Injectable()
 export class AuthState {
   @Selector() static isAuthenticated(state: AuthStateModel): boolean {
@@ -39,6 +43,7 @@ export class AuthState {
         (result) => {
           ctx.patchState({
             token: result.name,
+            user: result,
           });
           setTimeout(() => {
             ctx.dispatch(new CoinkHideLoadingAction()).subscribe(() => {
