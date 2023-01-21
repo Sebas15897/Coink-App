@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngxs/store';
-import { SweetAlertHelper } from 'src/app/core/helpers/sweet-alert.helper';
+import { Subject, takeUntil } from 'rxjs';
 import { CoinkLoginAction } from 'src/app/core/state/auth/auth.actions';
 
 @Component({
@@ -10,15 +10,16 @@ import { CoinkLoginAction } from 'src/app/core/state/auth/auth.actions';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+
+export class LoginComponent implements OnInit, OnDestroy {
+  private destroy: Subject<boolean> = new Subject<boolean>();
   hide: boolean = true;
   formLogin: FormGroup;
 
   constructor(
     private fb: FormBuilder,
     private store: Store,
-    private router: Router,
-    private sweetAlertHelper: SweetAlertHelper,
+    private router: Router
   ) {
     this.formLogin = this.createForm();
   }
@@ -34,12 +35,20 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.store.dispatch(new CoinkLoginAction()).subscribe(() => {
-      this.router.navigateByUrl('/admin');
-    });
+    this.store
+      .dispatch(new CoinkLoginAction())
+      .pipe(takeUntil(this.destroy))
+      .subscribe(() => {
+        this.router.navigateByUrl('/private');
+      });
   }
 
   get invalidForm(): boolean {
     return this.formLogin.invalid;
+  }
+
+  ngOnDestroy() {
+    this.destroy.next(true);
+    this.destroy.unsubscribe();
   }
 }
