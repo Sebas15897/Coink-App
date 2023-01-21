@@ -1,0 +1,25 @@
+$text-left-color: #C6F7DD;
+
+.vertical-container {
+  height: 100% !important;
+  background-color: #F2F2F2;
+}
+
+.vertical-container:first-child {
+  background-color: #001b24;
+}
+
+/* Text configuration */
+
+.coink-text-color {
+  color: $text-left-color;
+}
+
+.coink-title-paddig {
+  padding-inline: 5em;
+}
+
+.coink-text-paddig {
+  padding-inline: 11em;
+}
+
