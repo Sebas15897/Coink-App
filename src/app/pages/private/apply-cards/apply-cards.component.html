@@ -24,7 +24,7 @@
             <div class="mb-3">
               <mat-form-field>
                 <mat-label>Usuario</mat-label>
-                <input matInput type="text" formControlName="search" />
+                <input matInput type="text" formControlName="name" />
                 <button
                   *ngIf="search"
                   matSuffix
@@ -39,10 +39,10 @@
           </div>
           <div [ngClass]="{ 'col-4': search, 'col-6': !search }">
             <mat-form-field>
-              <mat-label>Fechas</mat-label>
-              <input matInput type="text" formControlName="datesearch" />
+              <mat-label>Tipo</mat-label>
+              <input matInput type="text" formControlName="type" />
               <button
-                *ngIf="datesearch"
+                *ngIf="typesearch"
                 matSuffix
                 mat-icon-button
                 aria-label="Clear"
@@ -59,11 +59,21 @@
   <div class="row">
     <div class="col-6 d-flex">
       <div class="pe-2">
-        <button mat-stroked-button class="mat-stroked-custom" color="primary">
+        <button
+          mat-stroked-button
+          class="mat-stroked-custom"
+          color="primary"
+          (click)="reset()"
+        >
           Limpiar filtros
         </button>
       </div>
-      <button mat-stroked-button class="mat-stroked-bg-custom" color="primary">
+      <button
+        mat-stroked-button
+        class="mat-stroked-bg-custom"
+        color="primary"
+        (click)="searchByFilter()"
+      >
         Buscar
       </button>
     </div>

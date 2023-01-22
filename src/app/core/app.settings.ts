@@ -14,7 +14,7 @@ export class AppSettings {
 
   public users = {
     urls: {
-      getUsers: EndPoint.urlBase('character/?page='),
+      getUsers: EndPoint.urlBase('character/'),
     }
   }
 

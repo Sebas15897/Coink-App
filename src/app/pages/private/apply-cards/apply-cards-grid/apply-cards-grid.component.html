@@ -26,7 +26,7 @@
     <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-end">
         <li class="page-item" [ngClass]="{ disabled: disabledPreviewBtn }">
-          <a class="page-link" (click)="previus()">Previous</a>
+          <a class="page-link" (click)="previus()">Anterior</a>
         </li>
         <li class="page-item" [ngClass]="{ active: firstButton }">
           <a class="page-link" (click)="changePage(1)">1</a>
@@ -44,7 +44,7 @@
           <a class="page-link" (click)="changePage(5)">5</a>
         </li>
         <li class="page-item" [ngClass]="{ disabled: disabledNextBtn }">
-          <a class="page-link" (click)="next()">Next</a>
+          <a class="page-link" (click)="next()">Siguiente</a>
         </li>
       </ul>
     </nav>

@@ -29,3 +29,8 @@ export interface ILocation {
   name: string;
   url: string;
 }
+
+export interface IUserSearch {
+  name: string;
+  type: string;
+}

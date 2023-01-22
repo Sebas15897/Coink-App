@@ -48,8 +48,9 @@ export class ApplyCardsGridComponent implements OnInit, OnChanges, OnDestroy {
   subscribeState() {
     this.listUsers$.pipe(takeUntil(this.destroy)).subscribe((users) => {
       if (users && users.length) {
-        console.log(users, 'users');
         this.gridData = users;
+      } else {
+        this.gridData = [];
       }
     });
 
