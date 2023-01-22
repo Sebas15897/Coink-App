@@ -7,6 +7,8 @@ import { AuthPublicGuard } from './core/guards/auth-public-guard/auth-public-gua
 import { StateModule } from './core/state/state.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { NGXS_PLUGINS } from '@ngxs/store';
+import { logoutPlugin } from './core/state/store-logout-plugin/store-logout-plugin';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,7 +19,15 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     BrowserAnimationsModule,
     NgxSpinnerModule,
   ],
-  providers: [AuthPublicGuard, AuthPrivateGuard],
+  providers: [
+    AuthPublicGuard,
+    AuthPrivateGuard,
+    {
+      provide: NGXS_PLUGINS,
+      useValue: logoutPlugin,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

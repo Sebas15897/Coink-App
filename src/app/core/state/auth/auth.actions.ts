@@ -5,6 +5,6 @@ export class CoinkLoginAction {
 }
 
 export class CoinkLogoutAction {
-  static readonly type = '[Auth] Logout';
+  static readonly type = 'CoinkLogoutAction';
   constructor() {}
 }
