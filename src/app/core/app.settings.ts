@@ -12,6 +12,12 @@ export class AppSettings {
     }
   }
 
+  public users = {
+    urls: {
+      getUsers: EndPoint.urlBase('character/'),
+    }
+  }
+
   public app = {
     name: 'Coink App',
     email: 'coinkapp@mail.com'

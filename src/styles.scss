@@ -1,7 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-@import "bootstrap-custom/_variables";
-@import "bootstrap/scss/bootstrap";
-@import "@angular/material/prebuilt-themes/indigo-pink.css";
+@import 'bootstrap-custom/_variables';
+@import 'bootstrap/scss/bootstrap';
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import 'ag-grid-community/styles/ag-grid.css';
+@import 'ag-grid-community/styles/ag-theme-alpine.css';
 
 .mat-expansion-panel-header.mat-expanded,
 .mat-expansion-panel-header.mat-expanded:hover,
@@ -14,4 +16,25 @@
     color: white;
   }
   background: $primary !important;
+}
+
+.mat-stroked-custom {
+  color: $primary !important;
+  border-color: $primary !important;
+}
+
+.mat-stroked-bg-custom {
+  background-color: $primary !important;
+  border-color: $primary !important;
+  color: white !important;
+}
+
+.ag-header-cell-label {
+  justify-content: center;
+}
+
+.ag-theme-alpine {
+  --ag-header-height: 40px;
+  --ag-header-foreground-color: white;
+  --ag-header-background-color: #004B40;
 }

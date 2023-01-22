@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { NGXS_PLUGINS } from '@ngxs/store';
 import { logoutPlugin } from './core/state/store-logout-plugin/store-logout-plugin';
+import { AgGridModule } from 'ag-grid-angular';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +19,7 @@ import { logoutPlugin } from './core/state/store-logout-plugin/store-logout-plug
     AppRoutingModule,
     BrowserAnimationsModule,
     NgxSpinnerModule,
+    AgGridModule,
   ],
   providers: [
     AuthPublicGuard,
