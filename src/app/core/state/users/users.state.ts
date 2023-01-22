@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { State, Action, StateContext, Selector } from '@ngxs/store';
-import { tap } from 'rxjs';
+import { catchError, tap } from 'rxjs';
 import { SweetAlertHelper } from '../../helpers/sweet-alert.helper';
 import { IUserResult } from '../../interfaces/users.interface';
 import { UsersService } from '../../services/users.service';
@@ -58,7 +58,7 @@ export class UsersState {
             (error) => {
               this.sweetAlertHelper.createCustomAlert({
                 title: 'Error',
-                text: error.message,
+                text: error.error.error,
                 icon: error,
               });
               ctx.dispatch(new CoinkHideLoadingAction());
@@ -76,6 +76,7 @@ export class UsersState {
     ctx: StateContext<UsersStateModel>,
     { payload }: GetUsersByFilterAction
   ) {
+    ctx.dispatch(new CoinkShowLoadingAction());
     return this.usersService.getUserByFilter(payload).pipe(
       tap(
         (resp) => {
@@ -83,16 +84,19 @@ export class UsersState {
             users: resp.results,
             totalCount: resp.info.count,
           });
+          setTimeout(() => {
+            ctx.dispatch(new CoinkHideLoadingAction());
+          }, 1000);
         },
         (error) => {
           this.sweetAlertHelper.createCustomAlert({
             title: 'Error',
-            text: error.message,
+            text: error.error.error,
             icon: error,
           });
           ctx.dispatch(new CoinkHideLoadingAction());
         }
-      )
+      ),
     );
   }
 }

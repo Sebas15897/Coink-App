@@ -45,6 +45,14 @@ export class ApplyCardsComponent implements OnInit, OnDestroy {
     this.store.dispatch(new GetUsersAction(null));
   }
 
+  resetName() {
+    this.searchForm.get('name')?.setValue('');
+  }
+
+  resetType() {
+    this.searchForm.get('type')?.setValue('');
+  }
+
   get search(): string {
     return this.searchForm.get('name')?.value;
   }
