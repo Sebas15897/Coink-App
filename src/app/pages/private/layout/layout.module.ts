@@ -10,6 +10,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [LayoutComponent, HeaderComponent, SidebarComponent],
@@ -22,6 +26,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatMenuModule,
     RouterModule,
     MatSidenavModule,
+    MatChipsModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatListModule,
   ],
 })
 export class LayoutModule {}

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { IMenu } from 'src/app/core/interfaces/menu.interface';
+import { Menu } from '../menu.data';
 
 @Component({
   selector: 'app-sidebar',
@@ -6,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
-
+  sideMenu: IMenu[] = Menu;
 }
