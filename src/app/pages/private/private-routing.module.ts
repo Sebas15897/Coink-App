@@ -7,8 +7,17 @@ const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
-    children: [],
-    canActivate: [AuthPrivateGuard]
+    children: [
+      { path: '', pathMatch: 'full', redirectTo: 'apply-cards' },
+      {
+        path: 'apply-cards',
+        loadChildren: () =>
+          import('./apply-cards/apply-cards.module').then(
+            (m) => m.ApplyCardsModule
+          ),
+      },
+    ],
+    canActivate: [AuthPrivateGuard],
   },
 ];
 
