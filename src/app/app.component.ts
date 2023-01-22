@@ -23,7 +23,6 @@ export class AppComponent implements OnDestroy {
 
   subscribeState() {
     this.showLoading$.pipe(takeUntil(this.destroy)).subscribe((show) => {
-      console.log(show)
       show ? this.ngxSpinnerService.show() : this.ngxSpinnerService.hide();
     });
   }

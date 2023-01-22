@@ -8,7 +8,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
-
+import { RouterModule } from '@angular/router';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [LayoutComponent, HeaderComponent, SidebarComponent],
@@ -19,6 +20,8 @@ import { MatMenuModule } from '@angular/material/menu';
     MatTooltipModule,
     MatButtonModule,
     MatMenuModule,
+    RouterModule,
+    MatSidenavModule,
   ],
 })
 export class LayoutModule {}

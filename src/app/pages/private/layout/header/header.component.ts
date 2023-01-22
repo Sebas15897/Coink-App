@@ -4,6 +4,7 @@ import { Store } from '@ngxs/store';
 import { Subject, takeUntil } from 'rxjs';
 import { SweetAlertHelper } from 'src/app/core/helpers/sweet-alert.helper';
 import { CoinkLogoutAction } from 'src/app/core/state/auth/auth.actions';
+import { ShowSideBarAction } from 'src/app/core/state/layout/layout.actions';
 
 @Component({
   selector: 'app-header',
@@ -13,13 +14,18 @@ import { CoinkLogoutAction } from 'src/app/core/state/auth/auth.actions';
 
 export class HeaderComponent implements OnDestroy {
   private destroy: Subject<boolean> = new Subject();
-  viewSidebar = false;
+  viewSidebar = true;
 
   constructor(
     private store: Store,
     private sweetAlertHelper: SweetAlertHelper,
     private router: Router,
   ) {}
+
+  showMenu() {
+    const show = this.viewSidebar = !this.viewSidebar;
+    this.store.dispatch(new ShowSideBarAction(show));
+  }
 
   logout() {
     this.sweetAlertHelper

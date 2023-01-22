@@ -5,6 +5,7 @@ import { tap } from 'rxjs';
 import { SweetAlertHelper } from '../../helpers/sweet-alert.helper';
 import { IUser } from '../../interfaces/user.interface';
 import { AuthService } from '../../services/auth.service';
+import { ShowSideBarAction } from '../layout/layout.actions';
 import {
   CoinkHideLoadingAction,
   CoinkShowLoadingAction,
@@ -45,6 +46,7 @@ export class AuthState {
             token: result.name,
             user: result,
           });
+          ctx.dispatch(new ShowSideBarAction(true));
           setTimeout(() => {
             ctx.dispatch(new CoinkHideLoadingAction()).subscribe(() => {
               this.sweetAlertHelper.createCustomAlert({

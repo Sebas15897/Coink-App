@@ -5,3 +5,14 @@ $heigth-main-header: 60px;
   height: $heigth-main-header;
   border-bottom: 1px solid #e0e0e0;
 }
+
+.main-content {
+  width: 100%;
+  height: calc(100vh - $heigth-main-header);
+  .sidebar {
+    min-width: 70px;
+    width: 200px;
+    position: absolute;
+    height: 100%;
+  }
+}
