@@ -7,6 +7,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { ApplyCardsGridComponent } from './apply-cards-grid/apply-cards-grid.component';
+import { AgGridModule } from 'ag-grid-angular';
 
 @NgModule({
   imports: [
@@ -17,7 +19,8 @@ import { MatInputModule } from '@angular/material/input';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    AgGridModule,
   ],
-  declarations: [ApplyCardsComponent],
+  declarations: [ApplyCardsComponent, ApplyCardsGridComponent],
 })
 export class ApplyCardsModule {}

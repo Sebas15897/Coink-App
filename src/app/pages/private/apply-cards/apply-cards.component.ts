@@ -1,6 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Store } from '@ngxs/store';
 import { Subject } from 'rxjs';
+import { EPages } from 'src/app/core/enums/pages.enum';
+import { GetUsersAction } from 'src/app/core/state/users/users.actions';
 
 @Component({
   selector: 'app-apply-cards',
@@ -11,11 +14,13 @@ export class ApplyCardsComponent implements OnInit, OnDestroy {
   private destroy: Subject<boolean> = new Subject();
   searchForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private store: Store) {
     this.searchForm = this.createForm();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
+
 
   createForm(): FormGroup {
     return this.fb.group({
