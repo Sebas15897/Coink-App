@@ -1,4 +1,4 @@
-# Coink App Prueba de cargo - Desarrollador Angular
+# Coink App
 
 ## Table of Content
 
@@ -18,7 +18,3 @@ Este proyecto se interpreta/prueba en Node `(version 16.19.0)`.
 
 ## Author
 Julio Sebastián Contreras - [Github](https://github.com/Sebas15897).
-
-Número de telefono: 3244692094.
-
-Correo Electronico: sebastiancontreras15897@gmail.com.
